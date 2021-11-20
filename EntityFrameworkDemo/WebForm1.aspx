@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="font-family:Arial">
-            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="EntityDataSource1">
+            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="ObjectDataSource1">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
@@ -23,6 +23,7 @@
                                     <asp:BoundField DataField="LastName" HeaderText="Last Name" />
                                     <asp:BoundField DataField="Gender" HeaderText="Gender" />
                                     <asp:BoundField DataField="Salary" HeaderText="Salary" />
+                                    <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
                                 </Columns>
                             </asp:GridView>
                         </ItemTemplate>
@@ -38,8 +39,10 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
-            <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=EmployeeDBContext" DefaultContainerName="EmployeeDBContext" EnableFlattening="False" EntitySetName="Departments" Include="Employees"></asp:EntityDataSource>
         </div>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetDepartments" TypeName="EntityFrameworkDemo.EmployeeRepository"></asp:ObjectDataSource>
     </form>
+    <p>
+        asedehe</p>
 </body>
 </html>
