@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Part8
+namespace Part11
 {
     public class EmployeeRepository
     {
@@ -22,18 +22,26 @@ namespace Part8
 
         public void UpdateEmployee(Employee employee)
         {
-            Employee employeeToUpdate = employeeDBContext.Employees.FirstOrDefault(x => x.Id == employee.Id);
-            employeeToUpdate.Name = employee.Name;
+            Employee employeeToUpdate = employeeDBContext.Employees
+                .SingleOrDefault(x => x.EmployeeId == employee.EmployeeId);
+            employeeToUpdate.EmployeeId = employee.EmployeeId;
+            employeeToUpdate.FirstName = employee.FirstName;
+            employeeToUpdate.LastName = employee.LastName;
             employeeToUpdate.Gender = employee.Gender;
-            employeeToUpdate.Salary = employee.Salary;
+            employeeToUpdate.Email = employee.Email;
+            employeeToUpdate.Mobile = employee.Mobile;
+            employeeToUpdate.Landline = employee.Landline;
+
             employeeDBContext.SaveChanges();
         }
 
         public void DeleteEmployee(Employee employee)
         {
-            Employee employeeToDelete = employeeDBContext.Employees.FirstOrDefault(x => x.Id == employee.Id);
+            Employee employeeToDelete = employeeDBContext.Employees
+                .SingleOrDefault(x => x.EmployeeId == employee.EmployeeId);
             employeeDBContext.Employees.Remove(employeeToDelete);
             employeeDBContext.SaveChanges();
         }
+
     }
 }
